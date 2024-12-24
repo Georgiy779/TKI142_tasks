@@ -7,8 +7,60 @@
 #include <locale.h>
 #include <time.h> // чтобы использовать функцию time()
 
+int* intarray(int n);
+int sumMultiples(int* array, int n);
+int replacement(int* array, int n);
+int Pair(int* array, int n);
 
-int* intmas(int n)
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	setlocale(LC_NUMERIC, "en-US");
+
+	//n - количество элементов массива
+	//sum - Сумма элементов массива
+	int n, sum;
+
+	//Ввод количества элемнтов массива
+	printf("input n\n");
+	scanf_s("%d", &n);
+	printf("   -> %d\n\n", n);
+
+	//Создание массива
+	int* array = intarray(n);
+
+	//проверка на правильный ввод массива
+	if (array != NULL)
+	{
+		//Вывод массива
+		for (int i = 0; i < n; i++)
+		{
+			printf("array[%d] = %d\n", i, array[i]);
+		}
+
+		//Сумма отрицательных элементов массива кратных 10
+		sumMultiples(array, n);
+
+		//Заменить первые k элементов массива в обратном порядке
+		replacement(array, n);
+		for (int i = 0; i < n; i++)
+		{
+			printf("array[%d] = %d\n", i, array[i]);
+		}
+
+		//Определение пары элементов произведение которых равных заданному числу.
+		Pair(array, n);
+
+		//Освобождение памяти
+		free(array);
+	}
+	else
+		printf("error");
+
+	return 0;
+}
+
+int* intarray(int n)
 {
 	//Для работы раномайзера
 	srand(time(NULL));
@@ -50,7 +102,7 @@ int* intmas(int n)
 }
 
 //Сумма отрицательных элементов массива кратных 10
-int sumkrat(int* array, int n)
+int sumMultiples(int* array, int n)
 {
 	//sum - сумма злементов
 	int sum = 0;
@@ -69,7 +121,7 @@ int sumkrat(int* array, int n)
 }
 
 //Заменить первые k элементов массива в обратном порядке
-int zam(int* array, int n)
+int replacement(int* array, int n)
 {
 	//k - переменная обозначающая какое количество первых элемнтов должно быть записанно в обратном порядке
 	//с - переменная введённая для записи первых k элементов массива в обратном порядке
@@ -91,7 +143,7 @@ int zam(int* array, int n)
 }
 
 //Определение пары элементов произведение которых равных заданному числу.
-int com(int* array, int n)
+int Pair(int* array, int n)
 {
 	//f - заданное число
 	int f;
@@ -108,53 +160,5 @@ int com(int* array, int n)
 		else
 			printf("Таких элементов нет.\n");
 	}
-	return 0;
-}
-
-int main()
-{
-	setlocale(LC_ALL, "Russian");
-	setlocale(LC_NUMERIC, "en-US");
-
-	//n - количество элементов массива
-	//sum - Сумма элементов массива
-	int n, sum;
-
-	//Ввод количества элемнтов массива
-	printf("input n\n");
-	scanf_s("%d", &n);
-	printf("   -> %d\n\n", n);
-
-	//Создание массива
-	int* array = intmas(n);
-
-	//проверка на правильный ввод массива
-	if (array != NULL)
-	{
-		//Вывод массива
-		for (int i = 0; i < n; i++)
-		{
-			printf("array[%d] = %d\n", i, array[i]);
-		}
-
-		//Сумма отрицательных элементов массива кратных 10
-		sumkrat(array, n);
-
-		//Заменить первые k элементов массива в обратном порядке
-		zam(array, n);
-		for (int i = 0; i < n; i++)
-		{
-			printf("array[%d] = %d\n", i, array[i]);
-		}
-
-		//Определение пары элементов произведение которых равных заданному числу.
-		com(array, n);
-
-		//Освобождение памяти
-		free(array);
-	}
-	else
-		printf("error");
-
 	return 0;
 }
