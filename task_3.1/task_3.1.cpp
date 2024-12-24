@@ -5,7 +5,29 @@
 #include <float.h>
 #include <math.h>
 
-double tabylir(double x, double dx, double xk)
+/**
+* @brief точка входа в програму
+* @param x значение минимальной велечины пераметра x
+* @param dx значение шага
+* @param xk значение максимальной велечины пераметра xk
+* @param a значение пераметра a
+* @param b значение пераметра b
+* @param с значение пераметра с
+* @return 0 в случве успеха
+*/
+
+double tabulation(double x, double dx, double xk);
+double derivative();
+
+int main()
+{
+	double x = 2, dx = 0.2, xk = 4;
+	tabulation(x, dx, xk);
+	derivative();
+	return 0;
+}
+
+double tabulation(double x, double dx, double xk)
 {
 	double y;
 
@@ -18,7 +40,8 @@ double tabylir(double x, double dx, double xk)
 	return 0;
 
 }
-double proizvod()
+
+double derivative()
 {
 	double a = 143, b = 777;
 	printf("\nc\tproiz\n");
@@ -26,12 +49,5 @@ double proizvod()
 	{
 		printf("%d\t%lf\n", c, a * b * (double)c);
 	}
-	return 0;
-}
-int main()
-{
-	double x = 2, dx = 0.2, xk = 4;
-	tabylir(x, dx, xk);
-	proizvod();
 	return 0;
 }
