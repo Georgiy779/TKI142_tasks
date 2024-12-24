@@ -5,6 +5,14 @@
 #include <stdbool.h>
 #include <locale.h>
 
+/**
+* @brief точка входа в програму
+* @param a значение пераметра a
+* @param b значение пераметра b
+* @param c значение пераметра c
+* @return 0 в случве успеха
+*/
+
 int input();
 int outputc(int a, int b);
 int output(int a, int b);
