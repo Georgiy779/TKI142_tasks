@@ -5,24 +5,41 @@
 #include <stdbool.h>
 #include <locale.h>
 
-double inputm()
+/**
+* @brief точка входа в програму
+* @param m значение массы
+* @param s значение площади
+* @param P значение давления
+* @return 0 в случве успеха
+*/
+
+double input(char type);
+double output(double m, double S, double g);
+
+int main()
+{
+	double m, S, P, g = 9.8;
+	m = input('m');
+	S = input('s');
+	P = output(m, S, g);
+	printf("P = %lf\n", P);
+	return 0;
+}
+
+
+double input(char type)
 {
 	setlocale(LC_ALL, "Russian");
 
 	double m;
-	printf("Ввидите m в кг.\n");
+	if (type == 'm')
+		printf("Введите m в кг.\n");
+	if (type == 's')
+		printf("Введите S в м^2.\n");
+
+
 	scanf_s("%lf", &m);
 	return m;
-}
-
-double inputS()
-{
-	setlocale(LC_ALL, "Russian");
-
-	double S;
-	printf("Ввидите S в м^2.\n");
-	scanf_s("%lf", &S);
-	return S;
 }
 
 double output(double m, double S, double g)
@@ -32,14 +49,4 @@ double output(double m, double S, double g)
 	printf("m = %lf\n", m);
 	printf("s = %lf\n", S);
 	return P;
-}
-
-int main()
-{
-	double m, S, P, g = 9.8;
-	m = inputm();
-	S = inputS();
-	P = output(m, S, g);
-	printf("P = %lf\n", P);
-	return 0;
 }
