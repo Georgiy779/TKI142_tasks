@@ -2,6 +2,16 @@
 #include <stdio.h>
 #include <math.h>
 
+/**
+* @brief точка входа в програму
+* @param Ax значение пераметра x в точке А
+* @param Ay значение пераметра y в точке A
+* @param Bx значение пераметра x в точке B
+* @param By значение пераметра y в точке B
+* @param S значение переменной расстояния между точками
+* @return 0 в случве успеха
+*/
+
 int input(int x);
 double output(int Ax, int Ay, int Bx, int By);
 
