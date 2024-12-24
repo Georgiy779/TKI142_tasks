@@ -2,48 +2,31 @@
 #include <stdio.h>
 #include <math.h>
 
-int inputAx(int Ax)
-{
+int input(int x);
+double output(int Ax, int Ay, int Bx, int By);
 
-	printf("Input Ax\n");
-	scanf_s("%d", &Ax);
-	return Ax;
+int main()
+{
+	int Ax = 0, Ay = 0, Bx = 0, By = 0;
+	Ax = input(Ax);
+	Ay = input(Ay);
+	Bx = input(Bx);
+	By = input(By);
+	output(Ax, Ay, Bx, By);
+	return 0;
 }
 
-int inputAy(int Ay)
+int input(int x)
 {
-	printf("Input Ay\n"),
-		scanf_s("%d", &Ay);
-	return Ay;
-}
 
-int inputBx(int Bx)
-{
-	printf("Input. Bx\n");
-	scanf_s("%d", &Bx);
-	return Bx;
-}
-
-int inputBy(int By)
-{
-	printf("Input By\n");
-	scanf_s("%d", &By);
-	return By;
+	printf("Input \n");
+	scanf_s("%d", &x);
+	return x;
 }
 
 double output(int Ax, int Ay, int Bx, int By)
 {
 	double S = sqrt(pow(Bx - Ax, 2) + pow(By - Ay, 2));
 	printf("S = %f", S);
-	return 0;
-}
-int main()
-{
-	int Ax = 0, Ay = 0, Bx = 0, By = 0;
-	Ax = inputAx(Ax);
-	Ay = inputAy(Ay);
-	Bx = inputBx(Bx);
-	By = inputBy(By);
-	output(Ax, Ay, Bx, By);
 	return 0;
 }
