@@ -11,7 +11,7 @@ int output(int a, int b);
 
 int main()
 {
-	double a, b;
+	int a, b;
 	a = input();
 	b = input();
 	printf("a = %d\n", a);
@@ -24,7 +24,7 @@ int main()
 int input()
 {
 	int a;
-	printf("input a.\n");
+	printf("input\n");
 	scanf_s("%d", &a);
 	return a;
 }
