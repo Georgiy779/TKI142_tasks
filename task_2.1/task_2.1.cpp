@@ -1,22 +1,19 @@
-﻿#define _USE_MATH_DEFINES
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <locale.h>
 
-/**
-* @brief точка входа в програму
-* @param a значение пераметра a
-* @param b значение пераметра b
-* @param c значение пераметра c
-* @return 0 в случве успеха
-*/
-
 int input();
 int outputc(int a, int b);
 int output(int a, int b);
 
+/**
+* @brief точка входа в програму
+* @param a значение пераметра a
+* @param b значение пераметра b
+* @return 0 в случве успеха
+*/
 int main()
 {
 	int a, b;
@@ -31,10 +28,10 @@ int main()
 
 int input()
 {
-	int a;
+	int x;
 	printf("input\n");
-	scanf_s("%d", &a);
-	return a;
+	scanf_s("%d", &x);
+	return x;
 }
 
 int outputc(int a, int b)
