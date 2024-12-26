@@ -6,48 +6,52 @@
 #include <math.h>
 
 /**
+* @brief Ввод значений переменных
+* @param x значение вводимой переменной
+* @return значение x
+*/
+double input();
+
+/**
+* @brief табулированние параметра x
+* @param x значение минимальной велечины пераметра x
+* @return табулированного значения x
+*/
+double tabulation(double x);
+
+/**
 * @brief точка входа в програму
 * @param x значение минимальной велечины пераметра x
 * @param dx значение шага
 * @param xk значение максимальной велечины пераметра xk
-* @param a значение пераметра a
-* @param b значение пераметра b
-* @param с значение пераметра с
 * @return 0 в случве успеха
 */
-
-double tabulation(double x, double dx, double xk);
-double derivative();
-
 int main()
 {
-	double x = 2, dx = 0.2, xk = 4;
-	tabulation(x, dx, xk);
-	derivative();
-	return 0;
-}
-
-double tabulation(double x, double dx, double xk)
-{
-	double y;
-
+	double x, dx, xk, tabulation_meaning;
+	printf("input minimum value x\n");
+	x = input();
+	printf("input maximum value x\n");
+	xk = input();
+	printf("input dx\n");
+	dx = input();
 	printf("x\ty\n");
-	for (x;x < xk + 0.2;x = x + dx)
+	for (x;x < xk + dx;x = x + dx)
 	{
-		y = 3 * x - 4 * log(x) - 5;
-		printf("%lf\t%lf\n", x, y);
+		tabulation_meaning = tabulation(x);
+		printf("%lf\t%lf\n", x, tabulation_meaning);
 	}
 	return 0;
-
 }
 
-double derivative()
+double tabulation(double x)
 {
-	double a = 143, b = 777;
-	printf("\nc\tproiz\n");
-	for (int c = 1; c <= 9; c++)
-	{
-		printf("%d\t%lf\n", c, a * b * (double)c);
-	}
-	return 0;
+	return 3 * x - 4 * log(x) - 5;
+}
+
+double input()
+{
+	double x;
+	scanf_s("%lf", &x);
+	return x;
 }
