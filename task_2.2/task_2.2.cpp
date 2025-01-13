@@ -30,27 +30,27 @@ double output(double x, double a);
 int main()
 {
 	const double a = 2.5;
-	double x, y;
-	x = input();
+	double x = input();
 	printf("x = %lf\n", x);
-	y = output(x, a);
+	double y = output(x, a);
 	printf("y = %lf\n", y);
 	return 0;
 }
 
 double input()
 {
-	double x;
+	double x = 0;
 	printf("input x.\n");
-	scanf_s("%lf", &x);
+	int result = scanf_s("%lf", &x);
+	if (result != 1)
+	{
+		puts("Ошибка ввода числа");
+		exit(1);
+	}
 	return x;
 }
 
 double output(double x, double a)
 {
-	double y;
-	if (x > a)
-		return x * pow(sin(x), 2);
-	else
-		return x * pow(cos(x), 2);
+	return x > a ? x * pow(sin(x), 2) : x * pow(cos(x), 2);
 }
