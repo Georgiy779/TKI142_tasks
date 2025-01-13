@@ -42,13 +42,11 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	setlocale(LC_NUMERIC, "en-US");
 
-	double a, b;
-
 	printf("input a\n");
-	a = input();
+	double a = input();
 
 	printf("input b\n");
-	b = input();
+	double b = input();
 
 	printf("a = %lf\n", a);
 	printf("b = %lf\n", b);
@@ -59,7 +57,7 @@ int main()
 	printf("b = %lf\n", b);
 
 	shiftVarible(&a, &b, noVAR);
-	printf("Вывод\n");
+	printf("Вывод без переменной\n");
 	printf("a = %lf\n", a);
 	printf("b = %lf\n", b);
 
@@ -68,37 +66,36 @@ int main()
 
 double input()
 {
-	double x;
-
-	for (;;)
+	double x = 0;
+	int result = scanf_s("%lf", &x);
+	if (result != 1)
 	{
-		int res = scanf_s("%lf", &x);
-
-		if (res > 0)
-			return x;
-
-		while ((getchar()) != '\n');
-
-		printf("Ввидите число \n");
+		puts("Ошибка ввода числа");
+		exit(1);
 	}
+	return x;
 }
 
 int shiftVarible(double*a, double *b, varShifts vs)
 {
-	if (vs == withVAR)
+	switch (vs)
+	{
+	case withVAR:
 	{
 		double c;
 		c = *a;
 		*a = *b;
 		*b = c;
+		return 0;
 	}
-
-	if (vs == noVAR)
+	case noVAR:
 	{
 		*a = *a + *b;
 		*b = *a - *b;
 		*a = *a - *b;
+		return 0;
 	}
-
-	return 0;
+	default:
+		exit(1);
+	}
 }
