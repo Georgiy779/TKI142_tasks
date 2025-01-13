@@ -28,14 +28,19 @@ double tabulation(double x);
 */
 int main()
 {
-	double x, dx, xk, tabulation_meaning;
 	printf("input minimum value x\n");
-	x = input();
+	double x = input();
+
 	printf("input maximum value x\n");
-	xk = input();
+	double xk = input();
+
 	printf("input dx\n");
-	dx = input();
+	double dx = input();
+
 	printf("x\ty\n");
+
+	double tabulation_meaning;
+
 	for (x;x < xk + dx;x = x + dx)
 	{
 		tabulation_meaning = tabulation(x);
@@ -46,12 +51,29 @@ int main()
 
 double tabulation(double x)
 {
+	if (x <= 0)
+	{
+		puts("x should be bigger 0!");
+		exit(1);
+	}
 	return 3 * x - 4 * log(x) - 5;
 }
 
 double input()
 {
-	double x;
-	scanf_s("%lf", &x);
-	return x;
+	double x = 0;
+	int result = scanf_s("%lf", &x);
+	if (result != 1)
+	{
+		puts("Error entering number");
+		exit(1);
+	}
+
+	if (x > 0)
+	{
+		return x;
+	}
+
+	puts("x should be bigger 0!");
+	exit(1);
 }
